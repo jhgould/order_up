@@ -72,7 +72,11 @@ RSpec.describe Chef, type: :feature do
     expect(page).to have_content("#{@sauce.name}")
 
     expect(page).to_not have_content("#{@noodles.name}")
+  end
 
+  it "user can see calories for a dish" do
+    visit "/dishes/#{@pizza.id}"
+    expect(page).to have_content("Calories: 170")
   end
 
 end
