@@ -78,5 +78,21 @@ RSpec.describe Chef, type: :feature do
       expect(page).to have_content("#{@bread.name}")
       expect(page).to have_content("#{@meat.name}")
       expect(page).to have_content("#{@sauce.name}")
+
+      visit "/chefs/#{@john.id}"
+
+      expect(page).to have_content("Chef #{@john.name}")
+      click_link "Ingredients"
+
+      expect(current_path).to eq("/chefs/#{@john.id}/ingredients")
+      expect(page).to have_content("#{@cheese.name}")
+      expect(page).to have_content("#{@sauce.name}")
+      expect(page).to have_content("#{@noodles.name}")
+      expect(page).to_not have_content("#{@meat.name}")
+      expect(page).to_not have_content("#{@bread.name}")
+
+
+
+
     end
 end
