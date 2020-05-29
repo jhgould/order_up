@@ -1,0 +1,9 @@
+<%= @chef.name %>
+<% #I know I need to use AR to find a uniqe list of these ingredients. Ran out of time trying to make it work %>
+<% @chef.dishes.each do |dish| %>
+  <% dish.ingredients.each do |ingredient| %>
+    <ul>
+      <%= ingredient.name %>
+    </ul>
+  <% end %>
+<% end %>
