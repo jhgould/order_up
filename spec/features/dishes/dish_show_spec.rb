@@ -75,6 +75,11 @@ RSpec.describe Chef, type: :feature do
   end
 
   it "user can see calories for a dish" do
+    DishIngredient.create!(dish_id: @pizza.id, ingredient_id: @cheese.id)
+    DishIngredient.create!(dish_id: @pizza.id, ingredient_id: @bread.id)
+    DishIngredient.create!(dish_id: @pizza.id, ingredient_id: @meat.id)
+    DishIngredient.create!(dish_id: @pizza.id, ingredient_id: @sauce.id)
+
     visit "/dishes/#{@pizza.id}"
     expect(page).to have_content("Calories: 170")
   end
